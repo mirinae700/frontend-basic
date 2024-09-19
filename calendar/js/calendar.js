@@ -12,7 +12,7 @@ class Calendar {
 
         this.baseDate = this.currDate;
         this.baseYear = this.baseDate.getFullYear();
-        this.baseMonth = this.baseDate.getMonth() + 1;
+        this.baseMonth = this.baseDate.getMonth();
         this.baseDay = this.baseDate.getDate();
 
         this.dayOfWeekLabel = ["일", "월", "화", "수", "목", "금", "토"];
@@ -46,8 +46,8 @@ class Calendar {
 
         const month = document.createElement("span");
         month.classList.add("month");
-        month.dataset.calMonth = this.baseMonth - 1;
-        month.textContent = this.baseMonth < 10 ? "0" + this.baseMonth : this.baseMonth;
+        month.dataset.calMonth = this.baseMonth;
+        month.textContent = this.baseMonth < 9 ? "0" + (this.baseMonth + 1) : this.baseMonth + 1;
 
         // 월 이동 버튼
         const leftArrow = document.createElement("i");
@@ -82,6 +82,8 @@ class Calendar {
         const eDate = new Date(this.baseDate.getFullYear(), this.baseDate.getMonth() + 1, 0);
 
         let dayCount = 1;
+        const calYear = Number(this.wrapper.querySelector(".year").dataset.calYear);
+        const calMonth = Number(this.wrapper.querySelector(".month").dataset.calMonth);
         const tbody = document.createElement("tbody");
 
         if(sDate.getDay() > 0) {
@@ -99,8 +101,8 @@ class Calendar {
                 const td = document.createElement("td");
                 
                 if(this.currDay === dayCount) {
-                    const currDate = new Date();
-                    if(currDate === this.currDate) td.classList.add("today");
+                    if(this.currYear === calYear && this.currMonth === calMonth)
+                        td.classList.add("today");
                 }
 
                 td.textContent = dayCount++;
@@ -120,8 +122,8 @@ class Calendar {
                     const td = document.createElement("td");
                     
                     if(this.currDay === dayCount) {
-                        const currDate = new Date();
-                        if(currDate === this.currDate) td.classList.add("today");
+                        if(this.currYear === calYear && this.currMonth === calMonth)
+                            td.classList.add("today");
                     }
 
                     td.textContent = dayCount++;
@@ -145,8 +147,8 @@ class Calendar {
                     const td = document.createElement("td");
                     
                     if(this.currDay === dayCount) {
-                        const currDate = new Date();
-                        if(currDate === this.currDate) td.classList.add("today");
+                        if(this.currYear === calYear && this.currMonth === calMonth)
+                            td.classList.add("today");
                     }
 
                     td.textContent = dayCount++;
@@ -213,7 +215,7 @@ class Calendar {
 
     resetBaseDateInfo() {
         this.baseYear = this.baseDate.getFullYear();
-        this.baseMonth = this.baseDate.getMonth() + 1;
+        this.baseMonth = this.baseDate.getMonth();
         this.baseDay = this.baseDate.getDate();
     }
 }
