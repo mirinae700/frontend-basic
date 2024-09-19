@@ -30,20 +30,22 @@ class Calendar {
         }
 
         const table = document.createElement("table");
-        this.wrapper.appendChild(this.createYearAndMonth()); // 월 표시
-        table.appendChild(this.createDayOfWeeks()); // 달력 요일 헤더 표시
+        this.wrapper.appendChild(this.createCalendarHeader()); // 캘린더 헤더 표시
+        table.appendChild(this.createDayOfWeeks()); // 달력 요일 표시
         this.wrapper.appendChild(this.createDays(table)); // 날짜 표시
     }
     
-    createYearAndMonth() {
+    createCalendarHeader() {
         const div = document.createElement("div");
-        div.classList.add("cal-title");
+        div.classList.add("cal-header");
 
+        // 년도 표시
         const year = document.createElement("span");
         year.classList.add("year");
         year.dataset.calYear = this.baseYear;
         year.textContent = this.baseYear;
 
+        // 월 표시
         const month = document.createElement("span");
         month.classList.add("month");
         month.dataset.calMonth = this.baseMonth;
@@ -51,17 +53,27 @@ class Calendar {
 
         // 월 이동 버튼
         const leftArrow = document.createElement("i");
-        leftArrow.addEventListener("click", () => this.changePrevMonth());
-        leftArrow.classList.add("fa-solid", "fa-chevron-left", "prev");
-
         const rightArrow = document.createElement("i");
-        rightArrow.classList.add("fa-solid", "fa-chevron-right", "next");
+        leftArrow.addEventListener("click", () => this.changePrevMonth());
         rightArrow.addEventListener("click", () => this.changeNextMonth());
-        
-        div.appendChild(leftArrow);
-        div.appendChild(year);
-        div.appendChild(month);
-        div.appendChild(rightArrow);
+        leftArrow.classList.add("fa-solid", "fa-chevron-left", "prev");
+        rightArrow.classList.add("fa-solid", "fa-chevron-right", "next");
+
+        // 년,월,버튼 태그 div에 append
+        const dateWrapper = document.createElement("div");
+        dateWrapper.appendChild(leftArrow);
+        dateWrapper.appendChild(year);
+        dateWrapper.appendChild(month);
+        dateWrapper.appendChild(rightArrow);
+        div.appendChild(dateWrapper);
+
+        // 오늘날짜 이동 버튼
+        const button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.classList.add("today-button");
+        button.textContent = "오늘";
+        button.addEventListener("click", () => this.changeCurrentMonth());
+        div.appendChild(button);
 
         return div;
     }
@@ -217,6 +229,11 @@ class Calendar {
         this.baseDay = this.baseDate.getDate();
     }
 
+    changeCurrentMonth() {
+        this.baseDate = this.currDate;
+        this.resetBaseDateInfo();
+        this.#renderCalendar();
+    }
 
 }
 

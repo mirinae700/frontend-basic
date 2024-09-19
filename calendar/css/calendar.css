@@ -30,23 +30,37 @@
 .calendar .month:before {
     content: ".";
 }
-.calendar .cal-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.calendar .cal-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
 }
-.calendar .cal-title i {
+.calendar .cal-header div {
+    grid-column: 2;
+}
+.calendar .cal-header button {
+    grid-column: 3;
+    width: 40px;
+    margin-left: auto;
+    margin: 0.2rem 0.7rem 0 auto;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #5d5d5a;
+    color: #f8f6f5;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+.calendar .cal-header i {
     cursor: pointer;
     color: #cdcdcd;
     margin-top: 0.2rem;
 }
-.calendar .cal-title i.prev {
+.calendar .cal-header i.prev {
     margin-right: 1rem;
 }
-.calendar .cal-title i.next {
+.calendar .cal-header i.next {
     margin-left: 1rem;
 }
 .calendar .today span.cal-day {
