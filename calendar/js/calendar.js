@@ -51,12 +51,12 @@ class Calendar {
 
         // 월 이동 버튼
         const leftArrow = document.createElement("i");
-        leftArrow.addEventListener("click", () => this.prevMonth());
+        leftArrow.addEventListener("click", () => this.changePrevMonth());
         leftArrow.classList.add("fa-solid", "fa-chevron-left", "prev");
 
         const rightArrow = document.createElement("i");
-        rightArrow.addEventListener("click", () => this.nextMonth());
         rightArrow.classList.add("fa-solid", "fa-chevron-right", "next");
+        rightArrow.addEventListener("click", () => this.changeNextMonth());
         
         div.appendChild(leftArrow);
         div.appendChild(year);
@@ -78,54 +78,50 @@ class Calendar {
     }
 
     createDays(table) {
-        const sDate = new Date(this.baseDate.getFullYear(), this.baseDate.getMonth(), 1);
-        const eDate = new Date(this.baseDate.getFullYear(), this.baseDate.getMonth() + 1, 0);
+        const startDate = new Date(this.baseDate.getFullYear(), this.baseDate.getMonth(), 1);
+        const endDate = new Date(this.baseDate.getFullYear(), this.baseDate.getMonth() + 1, 0);
 
         let dayCount = 1;
         const calYear = Number(this.wrapper.querySelector(".year").dataset.calYear);
         const calMonth = Number(this.wrapper.querySelector(".month").dataset.calMonth);
         const tbody = document.createElement("tbody");
 
-        if(sDate.getDay() > 0) {
+        if(startDate.getDay() > 0) {
             // 첫주 - 이전 달 포함하여 표시
             const tr = document.createElement("tr");
 
-            let prevMonthStartDay = new Date(sDate.getFullYear(), sDate.getMonth(), -sDate.getDay()).getDate() + 1;
-            for(let i = sDate.getDay(); i > 0; i--) {
+            let prevMonthStartDay = new Date(startDate.getFullYear(), startDate.getMonth(), -startDate.getDay()).getDate() + 1;
+            for(let i = startDate.getDay(); i > 0; i--) {
                 const td = document.createElement("td");
                 td.classList.add("diff-month");
                 td.textContent = prevMonthStartDay++;
                 tr.appendChild(td);
             }
-            for(let i = 0; i < 7 - sDate.getDay(); i++) {
+            for(let i = 0; i < 7 - startDate.getDay(); i++) {
                 const td = document.createElement("td");
-                
                 if(this.currDay === dayCount) {
                     if(this.currYear === calYear && this.currMonth === calMonth)
                         td.classList.add("today");
                 }
-
                 td.textContent = dayCount++;
                 tr.appendChild(td);
             }
             tbody.appendChild(tr);
 
             // 남은 이번 달 날짜 표시
-            const weeks = Math.ceil(eDate.getDate() / 7);
+            const weeks = Math.ceil(endDate.getDate() / 7);
             for(let i = 0; i < weeks; i++) {
-                if(dayCount > eDate.getDate()) break;
+                if(dayCount > endDate.getDate()) break;
                 const tr = document.createElement("tr");
 
                 for(let j = 0; j < 7; j++) {
-                    if(dayCount > eDate.getDate()) break;
+                    if(dayCount > endDate.getDate()) break;
 
                     const td = document.createElement("td");
-                    
                     if(this.currDay === dayCount) {
                         if(this.currYear === calYear && this.currMonth === calMonth)
                             td.classList.add("today");
                     }
-
                     td.textContent = dayCount++;
                     tr.appendChild(td);
                 }
@@ -135,23 +131,25 @@ class Calendar {
             table.appendChild(tbody);
 
         } else {
-            const weeks = Math.ceil(eDate.getDate() / 7);
+            const weeks = Math.ceil(endDate.getDate() / 7);
 
             for(let i = 0; i < weeks; i++) {
-                if(dayCount > eDate.getDate()) break;
+                if(dayCount > endDate.getDate()) break;
                 const tr = document.createElement("tr");
 
                 for(let j = 0; j < 7; j++) {
-                    if(dayCount > eDate.getDate()) break;
+                    if(dayCount > endDate.getDate()) break;
 
                     const td = document.createElement("td");
-                    
-                    if(this.currDay === dayCount) {
+                    const span = document.createElement("span");
+                    if(this.currDay === dayCount) { // 오늘 날짜 표시
                         if(this.currYear === calYear && this.currMonth === calMonth)
                             td.classList.add("today");
                     }
+                    span.textContent = dayCount++;
+                    span.classList.add("cal-day");
 
-                    td.textContent = dayCount++;
+                    td.appendChild(span);
                     tr.appendChild(td);
                 }
 
@@ -161,10 +159,10 @@ class Calendar {
         }
 
         // 마지막주 다음 달 표시
-        if(eDate.getDay() < 6) {
+        if(endDate.getDay() < 6) {
             const tr = tbody.querySelector("tr:last-child");
 
-            for(let i = 1; i < 7 - eDate.getDay(); i++) {
+            for(let i = 1; i < 7 - endDate.getDay(); i++) {
                 const td = document.createElement("td");
                 td.classList.add("diff-month");
                 td.textContent = i;
@@ -177,7 +175,7 @@ class Calendar {
         return table;
     }
 
-    prevMonth() {
+    changePrevMonth() {
         let year = Number(document.querySelector(".year").dataset.calYear);
         let month = Number(document.querySelector(".month").dataset.calMonth);
         
@@ -195,7 +193,7 @@ class Calendar {
         this.#renderCalendar();
     }
 
-    nextMonth() {
+    changeNextMonth() {
         let year = Number(document.querySelector(".year").dataset.calYear);
         let month = Number(document.querySelector(".month").dataset.calMonth);
         
@@ -218,6 +216,8 @@ class Calendar {
         this.baseMonth = this.baseDate.getMonth();
         this.baseDay = this.baseDate.getDate();
     }
+
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {

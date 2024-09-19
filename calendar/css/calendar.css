@@ -49,7 +49,21 @@
 .calendar .cal-title i.next {
     margin-left: 1rem;
 }
-.calendar .today {
-    border: 2px solid #ddeaef;
-    box-sizing: border-box;
+.calendar .today span.cal-day {
+    position: relative;
+    display: inline-block;
+    color: #f8f6f5;
+    z-index: 1;
+}
+.calendar .today span.cal-day:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #5d5d5a;
+    z-index: -1;
 }
