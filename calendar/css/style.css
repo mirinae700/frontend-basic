@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+*:not(i) {
+    font-family: "Noto Sans KR", sans-serif;
+}
+body {
+    font-size: 15px;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+.p-2 {
+    padding: 1.5rem;
+}
+
+.d-felx {
+    display: flex;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+#calendarWrap {
+    background-color: #f9f8f4;
+}
+.daily-wrap {
+    max-width: 600px;
+}
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.fa-solid {
+    font-size: 1rem;
+}
