@@ -2,6 +2,7 @@
 
 *:not(i) {
     font-family: "Noto Sans KR", sans-serif;
+    color: #654633;
 }
 body {
     font-size: 15px;
@@ -24,10 +25,14 @@ body {
 }
 
 #calendarWrap {
-    background-color: #f9f8f4;
+    min-width: 65%;
+    background-color: #eaeaf4;
 }
-.daily-wrap {
-    max-width: 600px;
+#dailyWrap {
+    width: 45%;
+    max-width: 450px;
+    background-color: #fcf9f9;
+    padding: 1.5rem;
 }
 .title {
     font-size: 1.5rem;

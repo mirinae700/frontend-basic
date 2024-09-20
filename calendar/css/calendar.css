@@ -5,24 +5,27 @@
     height: calc(100vh - 3rem);
     padding: 1.5rem;
     overflow: auto;
-    color: #5d5d5a;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
 }
 .calendar table {
     width: 100%;
     height: 100%;
     text-align: center;
-    border-spacing: 0.5rem;
+    border-collapse: collapse;
     font-size: 0.8rem;
 }
 .calendar table th, .calendar table td {
     padding: 1rem;
-    border-radius: 0.5rem;
+    border: 1px solid #654633;
 }
 .calendar table th {
-    background-color: #d2edf3;
+    background-color: #f8e5e5;
 }
 .calendar table td {
-    background-color: #ffffff;
+    background-color: #fcf9f9;
 }
 .calendar table td.diff-month {
     color: #cdcdcd;
@@ -47,14 +50,13 @@
     margin: 0.2rem 0.7rem 0 auto;
     border: none;
     border-radius: 0.3rem;
-    background-color: #5d5d5a;
-    color: #f8f6f5;
+    background-color: #654633;
+    color: #fcf9f9;
     padding: 0.2rem;
     cursor: pointer;
 }
 .calendar .cal-header i {
     cursor: pointer;
-    color: #cdcdcd;
     margin-top: 0.2rem;
 }
 .calendar .cal-header i.prev {
@@ -63,10 +65,13 @@
 .calendar .cal-header i.next {
     margin-left: 1rem;
 }
+.calendar .active {
+    background-color: #f7f2ec;
+}
 .calendar .today span.cal-day {
     position: relative;
     display: inline-block;
-    color: #f8f6f5;
+    color: #fcf9f9;
     z-index: 1;
 }
 .calendar .today span.cal-day:after {
@@ -78,6 +83,6 @@
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-color: #5d5d5a;
+    background-color: #654633;
     z-index: -1;
 }
