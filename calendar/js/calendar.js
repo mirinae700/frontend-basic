@@ -202,12 +202,12 @@ class Calendar {
         const td = document.createElement("td");
         const span = document.createElement("span");
 
-        if(this.currDay === this.dayCount) { // 오늘 날짜 표시
-            if(this.currYear === calYear && this.currMonth === calMonth)
+        if(this.dayCount === this.currDay) { // 오늘 날짜 표시
+            if(calYear === this.currYear && calMonth === this.currMonth)
                 td.classList.add("today");
         }
-        if(this.selectedDate.getDate() === this.dayCount) { // 선택 날짜 표시
-            if(this.currYear === calYear && this.selectedDate.getMonth() === calMonth)
+        if(this.dayCount === this.selectedDate.getDate()) { // 선택 날짜 표시
+            if(calYear === this.currYear && calMonth === this.selectedDate.getMonth())
                 td.classList.add("active");
         }
 
@@ -223,8 +223,8 @@ class Calendar {
     }
 
     changePrevMonth() {
-        let year = Number(document.querySelector(".year").dataset.calYear);
-        let month = Number(document.querySelector(".month").dataset.calMonth);
+        let year = Number(this.wrapper.querySelector(".year").dataset.calYear);
+        let month = Number(this.wrapper.querySelector(".month").dataset.calMonth);
         
         // month == 1, (year -= 1), (month = 12)
         // month != 1, (month -= 1)
@@ -241,8 +241,8 @@ class Calendar {
     }
 
     changeNextMonth() {
-        let year = Number(document.querySelector(".year").dataset.calYear);
-        let month = Number(document.querySelector(".month").dataset.calMonth);
+        let year = Number(this.wrapper.querySelector(".year").dataset.calYear);
+        let month = Number(this.wrapper.querySelector(".month").dataset.calMonth);
         
         // month == 12, (year += 1), (month = 1)
         // month != 12, (month += 1)
@@ -278,7 +278,7 @@ class Calendar {
         this.selectedDate = new Date(this.baseYear, target.dataset.calMonth, target.dataset.calDay);
         
         if(target.tagName.toLowerCase() === "td") {
-            const active = document.querySelector("td.active");
+            const active = this.wrapper.querySelector("td.active");
             if(active) {
                 active.classList.remove("active");
             }
