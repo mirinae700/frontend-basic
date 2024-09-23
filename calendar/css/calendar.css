@@ -38,11 +38,7 @@
     font-weight: 600;
     text-align: center;
 }
-.calendar .cal-header div {
-    grid-column: 1;
-}
 .calendar .cal-header button {
-    grid-column: 2;
     width: 40px;
     margin-left: auto;
     margin: 0.2rem 0.7rem 0 auto;
