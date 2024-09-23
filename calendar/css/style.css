@@ -18,6 +18,12 @@ body {
 .d-felx {
     display: flex;
 }
+.justify-content-between {
+    justify-content: space-between;
+}
+.align-items-center {
+    align-items: center;
+}
 
 .container {
     width: 100vw;
@@ -26,6 +32,8 @@ body {
 
 #calendarWrap {
     min-width: 65%;
+    height: calc(100vh - 3rem);
+    padding: 1.5rem;
     background-color: #eaeaf4;
 }
 #dailyWrap {
