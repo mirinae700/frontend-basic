@@ -1,0 +1,114 @@
+.open-modal {
+    cursor: pointer;
+}
+
+.schedule-header {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    border-bottom: 1px solid #654633;
+}
+
+.schedule-body {
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+#modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0000005e;
+    z-index: 99;
+}
+#modal.active {
+    display: flex;
+}
+
+.schedule-write {
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0 1rem;
+}
+.schedule-write .close-modal-wrap {
+    display: flex;
+    justify-content: end;
+    padding: 1em;
+    border-bottom: 1px solid #654633;
+}
+.schedule-write .close-modal-wrap .close-modal {
+    cursor: pointer;
+}
+.schedule-write form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em 0.5em;
+}
+.schedule-write form input {
+    width: 100%;
+    padding: 0.8em;
+    border-radius: 0.5em;
+    border: 1px solid #654633;
+    box-sizing: border-box;
+}
+.schedule-write form input:read-only {
+    background-color: #6546331f;
+}
+.schedule-write form input[name='period'] {
+    width: 35%;
+}
+.schedule-write form button[name='save-button'] {
+    background-color: #fcf9f9;
+    margin-left: auto;
+}
+
+.button-wrap .type-button {
+    display: inline-block;
+    text-align: center;
+    background-color: #fcf9f9;
+}
+.button-wrap label.active {
+    background-color: #654633;
+    color: #fcf9f9;
+}
+.button-wrap .type-button:hover,
+.schedule-write form button[name='save-button']:hover {
+    background-color: #654633;
+    color: #fcf9f9;
+}
+.button-wrap .type-button,
+.schedule-write form button[name='save-button'] {
+    width: 3rem;
+    padding: 0.3rem 0.5rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    border: 1px solid #654633;
+    font-size: 0.9em;
+}
+
+.color-wrap label {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.color-wrap label:not(.selected):hover {
+    opacity: 0.5;
+}
+.color-wrap label:has(input[value='#e94b3f']) {background-color: #e94b3f;}
+.color-wrap label:has(input[value='#ffd965']) {background-color: #ffd965;}
+.color-wrap label:has(input[value='#d3d477']) {background-color: #d3d477;}
+.color-wrap label:has(input[value='#9ec9ef']) {background-color: #9ec9ef;}
+.color-wrap label:has(input[value='#363230']) {background-color: #363230;}
+.color-wrap label.selected {
+    border: 2px solid #654633;
+}

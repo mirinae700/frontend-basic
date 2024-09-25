@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/schedule.css">
     <script src="js/index.js" defer></script>
     <script src="js/calendar.js" defer></script>
+    <script src="js/schedule.js" defer></script>
     <script src="https://kit.fontawesome.com/91fbf1f510.js" crossorigin="anonymous" defer></script>
     <title>일정</title>
 </head>
@@ -16,9 +18,56 @@
         <div class="d-felx">
             <section id="calendarWrap" class="calendar"></section>
             <section id="dailyWrap">
-                <p id="selectedDate"></p>
+                <div class="schedule-header d-felx justify-content-between align-items-center">
+                    <p id="selectedDate"></p>
+                    <div class="schedule-button-wrap">
+                        <i class="fa-solid fa-square-plus open-modal"></i>
+                    </div>
+                </div>
+                <div class="schedule-body">
+                    <ul class="schedule-list">
+                        <li>등록된 일정이 없습니다.</li>
+                    </ul>
+                </div>
+                <div id="calendarWrap2" class="calendar">
+
+                </div>
             </section>
         </div>
     </article>
+    <div id="modal">
+        <div class="schedule-write">
+            <div class="close-modal-wrap">
+                <i class="fa-solid fa-xmark close-modal"></i>
+            </div>
+            <form>
+                <div class="button-wrap">
+                    <label class="type-button active">일정
+                        <input type="radio" name="scheduleType" value="schedule" hidden>
+                    </label>
+                    <label class="type-button">할 일
+                        <input type="radio" name="scheduleType" value="todo" hidden>
+                    </label>
+                </div>
+                <label>
+                    <input type="text" placeholder="내용을 입력하세요.">
+                </label>
+                <div class="d-felx align-items-center gap-1">
+                    <input type="date" name="startDate">
+                    <span>~</span>
+                    <input type="date" name="endDate">
+                    <input type="text" name="period" readonly value="0일" data-period="0">
+                </div>
+                <div class="color-wrap">
+                    <label class="selected"><input type="radio" name="color" value="#e94b3f" hidden></label>
+                    <label><input type="radio" name="color" value="#ffd965" hidden></label>
+                    <label><input type="radio" name="color" value="#d3d477" hidden></label>
+                    <label><input type="radio" name="color" value="#9ec9ef" hidden></label>
+                    <label><input type="radio" name="color" value="#363230" hidden></label>
+                </div>
+                <button type="button" name="save-button">저장</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

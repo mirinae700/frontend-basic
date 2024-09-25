@@ -14,6 +14,9 @@ body {
 .p-2 {
     padding: 1.5rem;
 }
+.gap-1 {
+    gap: 0.8rem;
+}
 
 .d-felx {
     display: flex;
