@@ -1,5 +1,7 @@
 "use strict"
 
 document.addEventListener("DOMContentLoaded", () => {
-    new Calendar("#calendarWrap");
+    const c = new Calendar("#calendarWrap");
+    const s = new Schedule(c);
 })
+  

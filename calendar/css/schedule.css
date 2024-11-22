@@ -23,6 +23,10 @@
     left: 0;
     background-color: #0000005e;
     z-index: 99;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
 }
 #modal.active {
     display: flex;
@@ -60,9 +64,6 @@
 }
 .schedule-write form input:read-only {
     background-color: #6546331f;
-}
-.schedule-write form input[name='period'] {
-    width: 35%;
 }
 .schedule-write form button[name='save-button'] {
     background-color: #fcf9f9;

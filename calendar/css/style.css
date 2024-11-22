@@ -41,7 +41,6 @@ body {
 }
 #dailyWrap {
     width: 45%;
-    max-width: 450px;
     background-color: #fcf9f9;
     padding: 1.5rem;
 }

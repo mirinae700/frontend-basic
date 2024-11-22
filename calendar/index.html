@@ -52,10 +52,12 @@
                 <label>
                     <input type="text" placeholder="내용을 입력하세요.">
                 </label>
-                <div class="d-felx align-items-center gap-1">
-                    <input type="date" name="startDate">
-                    <span>~</span>
-                    <input type="date" name="endDate">
+                <div class="d-felx gap-1">
+                    <div class="d-felx align-items-center gap-1">
+                        <input type="date" class="start-date" name="startDate">
+                        <span>~</span>
+                        <input type="date" class="end-date" name="endDate">
+                    </div>
                     <input type="text" name="period" readonly value="0일" data-period="0">
                 </div>
                 <div class="color-wrap">
