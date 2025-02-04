@@ -1,22 +1,9 @@
 # 프론트엔드 개인 공부
 
-## - 커밋 규칙
+### 📚 소개
+- HTML, CSS, JavaScript를 사용해 간단한 프로젝트를 진행하며 기초를 정리하고자 합니다.
+- ES6 문법을 학습하고 적용합니다.
 
-|타입 이름|내용|
-|---|---|
-|feat|새로운 기능에 대한 커밋|
-|fix|버그 수정에 대한 커밋|
-|build|빌드 관련 파일 수정 / 모듈 설치 또는 삭제에 대한 커밋|
-|chore|그 외 자잘한 수정에 대한 커밋|
-|ci|ci 관련 설정 수정에 대한 커밋|
-|docs|문서 수정에 대한 커밋|
-|style|코드 스타일 혹은 포맷 등에 관한 커밋|
-|refactor|코드 리팩토링에 대한 커밋|
-|test|테스트 코드 수정에 대한 커밋|
-|perf|성능 개선에 대한 커밋|
+### ☑️ 커밋 규칙
+- <a href="https://gist.github.com/stephenparish/9941e89d80e2bc58a153#format-of-the-commit-message" alt="AngularJS commit conventions">AngularJS commit conventions</a> 규칙을 따른다.
 
-```cmd
-fix: 사용자 페이지 무한 스크롤 이슈 수정
-
-사용자 페이지 top, down 버튼 클릭 시 무한 스크롤 이슈 수정
-```
