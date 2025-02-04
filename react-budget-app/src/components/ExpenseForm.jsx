@@ -14,7 +14,7 @@ export default class ExpenseForm extends Component {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="charge">내용</label>
+            <label htmlFor="content">내용</label>
             <input
               type="text"
               className="form-control"
