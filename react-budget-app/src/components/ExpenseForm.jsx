@@ -7,12 +7,19 @@ export default class ExpenseForm extends Component {
       <form>
         <div className="form-center">
           <div className="form-group">
-            <label htmlFor="charge">지출항목</label>
+            <label htmlFor="typeCode">유형</label>
+            <select id="typeCode" name="typeCode">
+              <option value="income">수입</option>
+              <option value="expenditure">지출</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="charge">내용</label>
             <input
               type="text"
               className="form-control"
-              id="charge"
-              name="charge"
+              id="content"
+              name="content"
               placeholder="예) 렌트비"
             />
           </div>
