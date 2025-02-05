@@ -1,0 +1,34 @@
+.form-center {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.form-group:first-child {
+  flex: .5;
+}
+.form-group:not(:first-child) {
+  flex: 1;
+}
+.form-group label {
+  padding: .5rem;
+  color: var(--secondColor);
+}
+.form-group select,
+.form-group input {
+  padding: 1rem .5rem;
+  outline: none;
+}
+.form-group select {
+  width: 100%;
+  border: 1px solid #E0E0E0;
+  border-radius: .5rem;
+}
+.form-group input {
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+}
