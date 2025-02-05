@@ -6,6 +6,31 @@ import Summary from "./components/Summary";
 
 // 클래스형 컴포넌트
 export default class App extends Component {
+  // props를 통해 컴포넌트 간 데이터 전달하기
+  // 1. 상속하는 부모 컴포넌트로부터 자녀 컴포넌트에 데이터 등을 전달하는 방법
+  // 2. 읽기 전용(immutable)으로 자녀 컴포넌트에서는 변하지 않는다.
+  //    (변경 하려면 부모 컴포넌트에서 state를 변경시켜줘야 한다.)
+  constructor() {
+    super();
+
+    this.state = { // state를 통해 데이터(상태)를 변경할 수 있게된다.
+      expenses: [
+        { id: 1, typeCode: "income", content: "알바비 입금", amount: 1500000 },
+        { id: 2, typeCode: "expenditure", content: "렌트비", amount: 185000 },
+        { id: 3, typeCode: "expenditure", content: "교통비", amount: 122500 },
+        { id: 4, typeCode: "expenditure", content: "식비", amount: 100000 },
+      ],
+    };
+  }
+
+  handleDelete = (id) => {
+    this.setState({
+      expenses: this.state.expenses.filter(
+        (expense) => expense.id !== id
+      )
+    })
+  };
+
   render() {
     return (
       <main className="main-container">
@@ -14,7 +39,10 @@ export default class App extends Component {
           <ExpenseForm />
         </div>
         <div className="expense-list">
-          <ExpenseList />
+          <ExpenseList
+            initialExpenses={this.state.expenses}
+            handleDelete={this.handleDelete}
+          />
         </div>
         <div className="summary">
           <Summary />
