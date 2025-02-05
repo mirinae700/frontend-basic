@@ -7,8 +7,8 @@ export default class ExpenseItem extends Component {
     return (
       <li className="item">
         <div className="info">
-          <span className="expense">볼펜</span>
-          <span className="amount">1,000원</span>
+          <span className="expense">{this.props.expense.content}</span>
+          <span className="amount">{this.props.expense.amount}원</span>
         </div>
         <div>
           <button className="btn edit-btn">
