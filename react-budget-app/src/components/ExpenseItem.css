@@ -1,0 +1,43 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #E0E0E0;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  background: var(--mainWhite);
+  transition: all .2s ease-in;
+}
+.item:hover {
+  background: #f4f4f4;
+}
+
+.item div {
+  display: flex;
+  align-items: center;
+}
+
+.item .info {
+  flex: 0 0 60%;
+  justify-content: space-between;
+}
+.item .info .content {
+  margin-right: 2rem;
+}
+.item .info .amount {
+  font-weight: 300;
+  padding: .1rem .3rem;
+}
+
+.item .btn {
+  padding: 0 .5rem;
+}
+.item .btn svg {
+  font-size: 2rem;
+}
+.item .edit-btn {
+  color: var(--mainGreen);
+  margin-right: 1rem;
+}
+.item .delete-btn {
+  color: var(--mainRed);
+}

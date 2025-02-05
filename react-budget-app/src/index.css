@@ -1,0 +1,52 @@
+:root {
+  --primaryColor: #90A959;
+  --secondColor: #E9B872;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainRed: #C45151;
+  --mainGreen: #4CAF50;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+body {
+  background: var(--secondColor);
+  color: var(--mainBlack);
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.4rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 1.6rem;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-size: 1.4rem;
+  outline: 0;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+.btn__primary {
+  background-color: var(--primaryColor);
+  color: var(--mainWhite);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
