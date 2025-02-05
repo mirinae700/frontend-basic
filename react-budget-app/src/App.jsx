@@ -13,22 +13,50 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.state = { // state를 통해 데이터(상태)를 변경할 수 있게된다.
+    this.state = {
+      // state를 통해 데이터(상태)를 변경할 수 있게된다.
       expenses: [
         { id: 1, typeCode: "income", content: "알바비 입금", amount: 1500000 },
         { id: 2, typeCode: "expenditure", content: "렌트비", amount: 185000 },
         { id: 3, typeCode: "expenditure", content: "교통비", amount: 122500 },
         { id: 4, typeCode: "expenditure", content: "식비", amount: 100000 },
       ],
+      summary: {
+        income: 1500000,
+        expenditure: 407500,
+        balance: 1092500,
+      },
     };
   }
 
   handleDelete = (id) => {
+    this.setState(
+      (prevState) => ({
+        expenses: prevState.expenses.filter((expense) => expense.id !== id),
+      }),
+      () => {
+        this.calcSummary(); // 상태 업데이트 후에 호출
+      }
+    );
+  };
+
+  calcSummary = () => {
+    const income = this.calcSumByType("income");
+    const expenditure = this.calcSumByType("expenditure");
+
     this.setState({
-      expenses: this.state.expenses.filter(
-        (expense) => expense.id !== id
-      )
-    })
+      summary: {
+        income,
+        expenditure,
+        balance: income - expenditure,
+      },
+    });
+  };
+
+  calcSumByType = (type) => {
+    return this.state.expenses
+      .filter((expense) => expense.typeCode === type)
+      .reduce((sum, expense) => sum + expense.amount, 0);
   };
 
   render() {
@@ -45,7 +73,7 @@ export default class App extends Component {
           />
         </div>
         <div className="summary">
-          <Summary />
+          <Summary summary={this.state.summary} />
         </div>
       </main>
     );
