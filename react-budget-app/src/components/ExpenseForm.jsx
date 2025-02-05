@@ -1,3 +1,4 @@
+import "./ExpenseForm.css";
 import { Component } from "react";
 import { MdSend } from "react-icons/md";
 
@@ -9,8 +10,8 @@ export default class ExpenseForm extends Component {
           <div className="form-group">
             <label htmlFor="typeCode">유형</label>
             <select id="typeCode" name="typeCode">
-              <option value="income">수입</option>
               <option value="expenditure">지출</option>
+              <option value="income">수입</option>
             </select>
           </div>
           <div className="form-group">
