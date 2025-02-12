@@ -1,7 +1,7 @@
 {
   "name": "react-budget-app",
   "private": true,
-  "homepage": "https://mirinae700.github.io/frontend-basic/react-budget-app/",
+  "homepage": "https://mirinae700.github.io/frontend-basic/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
