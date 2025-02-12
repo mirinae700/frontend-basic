@@ -19,14 +19,18 @@ jobs:
         node-version: '16'  # 사용 중인 Node.js 버전
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd react-budget-app # 서브 디렉토리 이동
+        npm install
 
     - name: Build
-      run: npm run build
+      run: |
+        cd react-budget-app
+        npm run build
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist  # Vite 빌드의 출력 디렉토리
+        publish_dir: ./react-budget-app/dist  # Vite 빌드의 출력 디렉토리
         publish_branch: gh-pages  # 배포할 브랜치
