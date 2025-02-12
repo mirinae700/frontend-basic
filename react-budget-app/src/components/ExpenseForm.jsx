@@ -1,13 +1,26 @@
 import "./ExpenseForm.css";
 import { MdSend } from "react-icons/md";
 
-const ExpenseForm = () => {
+const ExpenseForm = ({
+  typeCode,
+  content,
+  amount,
+  handleTypeCode,
+  handleContent,
+  handleAmount,
+  handleSubmit,
+}) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="form-center">
         <div className="form-group">
           <label htmlFor="typeCode">유형</label>
-          <select id="typeCode" name="typeCode">
+          <select
+            id="typeCode"
+            name="typeCode"
+            onChange={handleTypeCode}
+            value={typeCode}
+          >
             <option value="expenditure">지출</option>
             <option value="income">수입</option>
           </select>
@@ -20,6 +33,8 @@ const ExpenseForm = () => {
             id="content"
             name="content"
             placeholder="예) 렌트비"
+            value={content}
+            onChange={handleContent}
           />
         </div>
         <div className="form-group">
@@ -30,6 +45,8 @@ const ExpenseForm = () => {
             id="amount"
             name="amount"
             placeholder="예) 100"
+            value={amount}
+            onChange={handleAmount}
           />
         </div>
       </div>
