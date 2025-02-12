@@ -38,7 +38,7 @@ const ExpenseForm = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="amount">비용</label>
+          <label htmlFor="amount">금액</label>
           <input
             type="number"
             className="form-control"

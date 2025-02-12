@@ -3,6 +3,7 @@ import { useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Summary from "./components/Summary";
+import Alert from "./components/Alert";
 
 const App = () => {
   const [expenses, setExpenses] = useState([
@@ -16,6 +17,8 @@ const App = () => {
   const [content, setContent] = useState("");
   const [amount, setAmount] = useState(0);
 
+  const [alert, setAlert] = useState({ show: false });
+
   const handleTypeCode = (event) => {
     setTypeCode(event.target.value);
   };
@@ -24,6 +27,13 @@ const App = () => {
   };
   const handleAmount = (event) => {
     setAmount(event.target.valueAsNumber);
+  };
+
+  const handleAlert = ({ type, text }) => {
+    setAlert({ show: true, type, text });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 7000);
   };
 
   const handleDelete = (id) => {
@@ -43,13 +53,22 @@ const App = () => {
       setTypeCode("expenditure");
       setContent("");
       setAmount(0);
+
+      handleAlert({
+        type: "success",
+        text: "정상적으로 추가되었습니다.",
+      });
     } else {
-      console.log("error");
+      handleAlert({
+        type: "danger",
+        text: "내용은 빈값일 수 없으며, 금액은 0보다 커야합니다.",
+      });
     }
   };
 
   return (
     <main className="main-container">
+      {alert.show ? <Alert type={alert.type} text={alert.text} /> : null}
       <h1>예산 계산기</h1>
       <div className="expense-form">
         <ExpenseForm

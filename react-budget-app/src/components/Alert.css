@@ -1,0 +1,16 @@
+.alert {
+  width: 100%;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  background-color: var(--mainWhite);
+  border-radius: 5px;
+}
+.alert.alert-success {
+  color: var(--mainWhite);
+  background-color: var(--mainGreen);
+}
+.alert.alert-danger {
+  color: var(--mainWhite);
+  background-color: var(--mainRed);
+}
