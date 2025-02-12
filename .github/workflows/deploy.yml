@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 배포할 브랜치를 지정. 보통 main 또는 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'  # 사용 중인 Node.js 버전
+
+    - name: Install dependencies
+      run: |
+        cd react-budget-app # 서브 디렉토리 이동
+        npm install
+
+    - name: Build
+      run: |
+        cd react-budget-app
+        npm run build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./react-budget-app/dist  # Vite 빌드의 출력 디렉토리
+        publish_branch: gh-pages  # 배포할 브랜치
