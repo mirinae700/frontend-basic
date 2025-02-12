@@ -59,7 +59,6 @@ const App = () => {
   const handleDelete = (id) => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(newExpenses);
-    handleSummary();
   };
 
   const handleEdit = (id) => {
@@ -85,7 +84,6 @@ const App = () => {
         };
         const newExpenses = [...expenses, newExpense]; // 불변성 지키기 위해 새로운 목록 배열 생성
         setExpenses(newExpenses);
-        handleSummary();
 
         handleAlert({
           type: "success",
@@ -97,7 +95,6 @@ const App = () => {
         });
         setExpenses(newExpenses);
         setEdit(false);
-        handleSummary();
 
         handleAlert({
           type: "success",
