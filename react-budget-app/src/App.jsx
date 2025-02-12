@@ -27,7 +27,7 @@ const App = () => {
   };
 
   const handleDelete = (id) => {
-    const newExpenses = expenses.filter((expense) => expense.id === id);
+    const newExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(newExpenses);
   };
 
