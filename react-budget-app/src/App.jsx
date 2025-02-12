@@ -60,7 +60,6 @@ const App = () => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(newExpenses);
     handleSummary();
-    console.log(summary);
   };
 
   const handleEdit = (id) => {
