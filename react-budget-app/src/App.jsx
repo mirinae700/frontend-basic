@@ -28,6 +28,10 @@ const App = () => {
 
   const [edit, setEdit] = useState(false); // submit 버튼 이름 true일때 "수정"으로 표시
 
+  const clearItems = () => {
+    setExpenses([]);
+  }
+
   const handleTypeCode = (event) => {
     setTypeCode(event.target.value);
   };
@@ -138,6 +142,7 @@ const App = () => {
           expenses={expenses}
           handleDelete={handleDelete}
           handleEdit={handleEdit}
+          clearItems={clearItems}
         />
       </div>
       <div className="summary">
