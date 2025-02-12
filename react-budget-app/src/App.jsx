@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Summary from "./components/Summary";
@@ -19,6 +19,12 @@ const App = () => {
 
   const [alert, setAlert] = useState({ show: false });
 
+  const [summary, setSummary] = useState({
+    income: 0,
+    expenditure: 0,
+    balance: 0,
+  });
+
   const handleTypeCode = (event) => {
     setTypeCode(event.target.value);
   };
@@ -36,9 +42,22 @@ const App = () => {
     }, 7000);
   };
 
+  const handleSummary = () => {
+    const income = expenses.reduce((acc, curr) => {
+      return curr.typeCode === "income" ? acc + curr.amount : acc + 0;
+    }, 0);
+    const expenditure = expenses.reduce((acc, curr) => {
+      return curr.typeCode === "expenditure" ? acc + curr.amount : acc + 0;
+    }, 0);
+
+    setSummary({ income, expenditure, balance: income - expenditure });
+  };
+
   const handleDelete = (id) => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(newExpenses);
+    handleSummary();
+    console.log(summary);
   };
 
   const handleSubmit = (event) => {
@@ -48,6 +67,7 @@ const App = () => {
       const newExpense = { id: crypto.randomUUID(), typeCode, content, amount };
       const newExpenses = [...expenses, newExpense]; // 불변성 지키기 위해 새로운 목록 배열 생성
       setExpenses(newExpenses);
+      handleSummary();
 
       // 입력란 초기화
       setTypeCode("expenditure");
@@ -65,6 +85,10 @@ const App = () => {
       });
     }
   };
+
+  useEffect(() => {
+    handleSummary();
+  }, [expenses]); // expenses가 변경될때마다 handleSummary 실행
 
   return (
     <main className="main-container">
@@ -85,7 +109,7 @@ const App = () => {
         <ExpenseList expenses={expenses} handleDelete={handleDelete} />
       </div>
       <div className="summary">
-        <Summary />
+        <Summary summary={summary} />
       </div>
     </main>
   );
